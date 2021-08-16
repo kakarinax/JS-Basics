@@ -1,5 +1,6 @@
 import {Cliente} from "./Cliente.js"
 import {ContaCorrente} from "./ContaCorrente.js"
+import {ContaPoupanca } from "./ContaPoupanca.js"
 
 
 const cliente1 = new Cliente("Karina", 52678941265); // construtor criado.
@@ -14,20 +15,14 @@ const cliente2 = new Cliente("Aline",35241269852);
 
 console.log(cliente2);
 
-const cc1 = new ContaCorrente(1001, cliente1);
+const cc1 = new ContaCorrente(cliente1, 1001);
 // cc1.cliente = cliente1;
 // cc1.agencia = 1001;
+cc1.depositar(300);
+cc1.sacar(100);
 console.log(cc1);
 
-const cc2 = new ContaCorrente(1002, cliente2);
+const cp1 = new ContaPoupanca(220, cliente2, 1002);
 // cc2.cliente = cliente2;
 // cc2.agencia = 1002;
-console.log(cc2);
-
-cc1.depositar(500);
-cc1.transferir(200, cc2);
-
-console.log(cc2);
-console.log(cc1);
-
-console.log(ContaCorrente.totalContas);
+console.log(cp1);
