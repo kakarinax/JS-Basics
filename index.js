@@ -1,28 +1,14 @@
-import {Cliente} from "./Cliente.js"
-import {ContaCorrente} from "./ContaCorrente.js"
-import {ContaPoupanca } from "./ContaPoupanca.js"
+import { Cliente } from "./Cliente.js";
+import { Gerente } from "./Funcionarios/Gerente.js";
+import { Diretor } from "./Funcionarios/Diretor.js";
+import { SistemaAutenticacao } from "./SistemaAutenticacao.js";
 
+const diretor = new Diretor("Karina", 10000, 1345678901);
+diretor.cadastrarSenha("123456");
+const gerente = new Gerente("Aline", 5000, 32165498710);
+gerente.cadastrarSenha("123456");
 
-const cliente1 = new Cliente("Karina", 52678941265); // construtor criado.
-// cliente1.nome = "Karina";
-// cliente1.cpf = 52678941265;
+const gerenteEstaLogado = SistemaAutenticacao.login(gerente, "123456");
+const diretorEstaLogado = SistemaAutenticacao.login(diretor, "123456");
 
-console.log(cliente1);
-
-const cliente2 = new Cliente("Aline",35241269852);
-// cliente2.nome = "Aline";
-// cliente2.cpf = 352412698752;
-
-console.log(cliente2);
-
-const cc1 = new ContaCorrente(cliente1, 1001);
-// cc1.cliente = cliente1;
-// cc1.agencia = 1001;
-cc1.depositar(300);
-cc1.sacar(100);
-console.log(cc1);
-
-const cp1 = new ContaPoupanca(220, cliente2, 1002);
-// cc2.cliente = cliente2;
-// cc2.agencia = 1002;
-console.log(cp1);
+console.log(gerenteEstaLogado);
